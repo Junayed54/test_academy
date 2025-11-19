@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-runserver.Command.default_port = config('WebServer_Port', default = "8001")
+runserver.Command.default_port = config('WebServer_Port', default = "8000")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'wkf6c#&j%k%-jae(!p_*dq&9x*j_cvsa_l4ump#5f-^p1b(-8b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # FRONTEND_URL = 'http://localhost:8000'
 
 # ALLOWED_HOSTS = []
@@ -201,6 +201,19 @@ CHANNEL_LAYERS = {
 #     }
 # }
 
+# for test app
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'test_quiz_portal',
+        'USER': 'root',
+        'PASSWORD': 'Bridgers@123',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 
 # DATABASES = {
 #     'default': {
@@ -215,16 +228,16 @@ CHANNEL_LAYERS = {
 
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'quiz_portal',
-        'USER': 'root',
-        'PASSWORD': 'Bridgers@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'quiz_portal',
+#         'USER': 'root',
+#         'PASSWORD': 'Bridgers@123',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 
