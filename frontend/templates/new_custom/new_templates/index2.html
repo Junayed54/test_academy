@@ -313,6 +313,77 @@
 }
 
   </style>
+
+    <!-- sticky ads css -->
+    <style>
+      .sticky-ad {
+      width: fit-content;
+      position: sticky;
+      top: 0;
+      z-index: 9999;
+      background: white;
+      padding: 5px 0;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+  }
+
+  .ad-wrapper {
+      position: relative;
+      display: inline-block;
+  }
+
+  .ad-toggle-btn {
+      position: absolute;
+      top: 2px;
+      right: -2px;
+      background: #fff;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1;
+      z-index: 10000;
+  }
+
+
+  </style>
+  <!-- google translate style -->
+  <style>
+    /* 1. HIDE GOOGLE'S DEFAULT BRANDING */
+    #google_translate_element .goog-te-gadget-simple {
+        /* Hide the default border and background */
+        border: none !important;
+        background-color: transparent !important;
+    }
+
+    /* 2. HIDE THE 'Powered by Google' TEXT */
+    #google_translate_element .goog-te-gadget-simple span {
+        display: none !important;
+    }
+
+    /* 3. Style the containing div (mt-2 is already there) */
+    #google_translate_element {
+        /* Example: Give it a nice background or padding */
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #f8f8f8;
+        display: inline-block; /* Makes it only as wide as the content */
+    }
+
+    /* Optional: Hide the default language text if needed */
+    #google_translate_element a.goog-te-menu-value {
+        color: #333 !important;
+    }
+
+    /* 4. Hide the annoying top frame/banner */
+    .goog-tooltip, .goog-te-banner-frame {
+        display: none !important;
+    }
+    
+    </style>
   <!-- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
     window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -376,9 +447,30 @@
     <!-- end script -->
 </head>
 <body>
+
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N9SGFF4C"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Sticky ads -->
+ <!-- <div class="d-flex justify-content-center">
+  <div class="sticky-ad d-flex justify-content-center w-full" id="adContainer">
+    <button id="toggleAdBtn" class="ad-toggle-btn">^</button>
+
+    <iframe id='acc76e0c'
+            name='acc76e0c'
+            src='http://161.97.141.58:8080/www/delivery/afr.php?zoneid=3&cb=INSERT_RANDOM_NUMBER_HERE'
+            frameborder='0'
+            scrolling='no'
+            width='728'
+            height='90'
+            allow='autoplay'>
+    </iframe>
+</div> -->
+</div>
+
+
+
 <!-- End Google Tag Manager (noscript) -->
 
   <header style="background: rgb(239, 227, 216)">
@@ -391,7 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ezstandalone.cmd = ezstandalone.cmd || [];
     </script>
 
-
+    
     
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
@@ -446,6 +538,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </li>
           <li class="nav-item active">
             <a class="nav-link fw-bold" href="/contact-us/">যোগাযোগ</a>
+          </li>
+          <li class="nav-item active">
+            <div id="google_translate_element"></div>
           </li>
         </ul>
 
@@ -730,7 +825,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-
+<script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'bn',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
   // Automatically set current year
   document.getElementById("year").textContent = new Date().getFullYear();
@@ -1038,6 +1141,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 {% block body_js %}{% endblock %}
 {% load static %}
 <!-- <script src="{% static 'Js/new_templates_js/index2.js' %}"></script> -->
+ <!-- ads script -->
+<script>
+document.getElementById("toggleAdBtn").addEventListener("click", function () {
+    const iframe = document.getElementById("acc76e0c");
+
+    if (iframe.style.display === "none") {
+        // Show ad
+        iframe.style.display = "block";
+        this.innerHTML = "▲";   // arrow up
+    } else {
+        // Hide ad
+        iframe.style.display = "none";
+        this.innerHTML = "▼";   // arrow down
+    }
+});
+</script>
 
 <script src="../../../static/Js/new_templates_js/index2.js"></script>
 <!-- <script src="../../../static/Js/new_templates_js/sw.js"></script> -->
