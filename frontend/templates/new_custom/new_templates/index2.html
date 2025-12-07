@@ -276,114 +276,151 @@
   <style>
 
    .ad-container-overlay {
-  position: fixed;
-  top: 50%;
-  right: -230px; /* Hides the ad container off-screen to the right. Use a negative value equal to its width. */
-  transform: translateY(-20%);
-  transition: right 0.8s ease-out; /* Animates the 'right' property for a smooth slide. */
-  z-index: 1050;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth. */
-  border-radius: 8px; /* Rounds the corners of the ad. */
-  /* Ensures the close button doesn't go outside the container. */
-}
-
-.ad-container-overlay.visible {
-  right: 20%; /* Slides the ad to the center of the screen. */
-  transform: translate(20%, -20%);
-}
-
-.close-ad-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #ff4b4b;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translate(50%, -50%);
-  z-index: 10;
-}
-
-  </style>
-
-    <!-- sticky ads css -->
-    <style>
-      .sticky-ad {
-      width: fit-content;
-      position: sticky;
-      top: 0;
-      z-index: 9999;
-      background: white;
-      padding: 5px 0;
-      border-bottom: 1px solid #ddd;
-      display: flex;
-      justify-content: center;
+    position: fixed;
+    top: 50%;
+    right: -230px; /* Hides the ad container off-screen to the right. Use a negative value equal to its width. */
+    transform: translateY(-20%);
+    transition: right 0.8s ease-out; /* Animates the 'right' property for a smooth slide. */
+    z-index: 1050;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth. */
+    border-radius: 8px; /* Rounds the corners of the ad. */
+    /* Ensures the close button doesn't go outside the container. */
   }
 
-  .ad-wrapper {
-      position: relative;
-      display: inline-block;
+  .ad-container-overlay.visible {
+    right: 20%; /* Slides the ad to the center of the screen. */
+    transform: translate(20%, -20%);
   }
 
-  .ad-toggle-btn {
-      position: absolute;
-      top: 2px;
-      right: -2px;
-      background: #fff;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 1;
-      z-index: 10000;
+  .close-ad-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff4b4b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate(50%, -50%);
+    z-index: 10;
   }
 
-
-  </style>
-  <!-- google translate style -->
-  <style>
-    /* 1. HIDE GOOGLE'S DEFAULT BRANDING */
-    #google_translate_element .goog-te-gadget-simple {
-        /* Hide the default border and background */
-        border: none !important;
-        background-color: transparent !important;
-    }
-
-    /* 2. HIDE THE 'Powered by Google' TEXT */
-    #google_translate_element .goog-te-gadget-simple span {
-        display: none !important;
-    }
-
-    /* 3. Style the containing div (mt-2 is already there) */
-    #google_translate_element {
-        /* Example: Give it a nice background or padding */
-        padding: 5px;
-        border-radius: 5px;
-        background-color: #f8f8f8;
-        display: inline-block; /* Makes it only as wide as the content */
-    }
-
-    /* Optional: Hide the default language text if needed */
-    #google_translate_element a.goog-te-menu-value {
-        color: #333 !important;
-    }
-
-    /* 4. Hide the annoying top frame/banner */
-    .goog-tooltip, .goog-te-banner-frame {
-        display: none !important;
-    }
-    
     </style>
+
+      <!-- sticky ads css -->
+      <style>
+        .sticky-ad {
+        width: fit-content;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        background: white;
+        padding: 5px 0;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ad-wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .ad-toggle-btn {
+        position: absolute;
+        top: 2px;
+        right: -2px;
+        background: #fff;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1;
+        z-index: 10000;
+    }
+
+
+    /* --- CRITICAL: HIDES ALL GOOGLE BRANDING AND THE TOP BAR ELEMENT --- */
+
+  /* 1. Hides the "Powered by Google" text and logo link */
+  .goog-logo-link, 
+  .goog-te-gadget img {
+      display: none !important;
+  }
+
+  /* 2. Hides the "Translated into" banner that appears after selection */
+  .goog-te-banner-frame.skiptranslate { 
+      display: none !important; 
+  }
+
+  /* 3. Ensures the body doesn't get pushed down by the invisible banner */
+  body { 
+      top: 0px !important; 
+  }
+
+  /* 4. Hides the default text and makes the widget fully transparent/invisible */
+  .goog-te-gadget {
+      color: transparent !important;
+  }
+
+
+  /* --- YOUR CUSTOM ICON AND CLICKABLE OVERLAY STYLES --- */
+
+  .translate-container {
+      /* Required for positioning the transparent dropdown over the icon */
+      position: relative;
+      display: flex;
+      align-items: center;
+      /* Optional: Sets the size of the clickable area */
+      height: 40px; 
+      width: 40px;
+  }
+
+  /* Styles for your custom icon */
+  .translate-icon {
+      font-size: 1.5em; 
+      color: #FFF; /* Use your navbar color */
+      position: relative;
+      z-index: 1; 
+      padding: 5px;
+      /* Allows clicks to go through to the transparent select box */
+      pointer-events: none; 
+  }
+
+  /* Styles to make the actual Google Translate dropdown invisible and clickable */
+  #google_translate_element {
+      /* Place it exactly over the icon */
+      position: absolute; 
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      /* Ensure the invisible element is on top to catch clicks */
+      z-index: 2; 
+      /* Make it transparent */
+      opacity: 0;
+  }
+
+  /* Target the generated SELECT box inside the widget */
+  #google_translate_element select {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      /* Hides the default text */
+      color: transparent; 
+  }
+</style>
   <!-- <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
   <script>
     window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -539,8 +576,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li class="nav-item active">
             <a class="nav-link fw-bold" href="/contact-us/">যোগাযোগ</a>
           </li>
-          <li class="nav-item active">
-            <div id="google_translate_element"></div>
+          <li class="nav-item active translate-container">
+            <i class="fas fa-globe translate-icon"></i> 
+            <div class="gtranslate_wrapper"></div>
           </li>
         </ul>
 
@@ -825,15 +863,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'bn',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>window.gtranslateSettings = {"default_language":"bn","languages":["bn","hi","en"],"wrapper_selector":".gtranslate_wrapper"}</script>
+<script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+
+
 <script>
   // Automatically set current year
   document.getElementById("year").textContent = new Date().getFullYear();
