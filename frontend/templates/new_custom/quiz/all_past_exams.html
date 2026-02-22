@@ -176,6 +176,7 @@
 {% block content %}
 
     <div class="container py-4">
+
         <h2 class="mb-4 text-center" id="exam-type-title" style="color: rgb(114, 125, 115); text-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.25);"></h2>
         <div class="row">
             <div class="loader-container" id="loader">
@@ -193,6 +194,24 @@
 
         </div>
     </div>
+
+    <!-- ===== Floating Revive Ad (600x200) ===== -->
+<div class="floating-banner" id="reviveFloatingAd"
+     style="width:600px; height:200px; overflow:hidden;">
+
+    <button onclick="document.getElementById('reviveFloatingAd').style.display='none'" 
+            style="position:absolute; top:-2px; right:-2px; background:#ff6600; color:white; border:none; border-radius:50%; width:25px; height:25px; cursor:pointer;">
+        ×
+    </button>
+
+    <ins 
+        data-revive-zoneid="1"
+        data-revive-id="70b71f6270a95002fad453afac360524"
+        style="display:block; width:600px; height:200px;">
+    </ins>
+</div>
+
+<script async src="http://46.225.58.8:8081/www/delivery/asyncjs.php"></script>
     <div style="height: 210px"></div>
     
 {% endblock %}
