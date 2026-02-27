@@ -9,299 +9,223 @@
 
     .card {
         width: 100%;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-        padding: 1.5rem;
-        margin: 2rem auto;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        background-color: #fff;
     }
 
     #past-exam-title {
         max-width: 100%;
         display: block;
         word-wrap: break-word;
-    }
-
-    .card-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #2c3e50;
-    }
-
-    .unpublished-badge {
-        background-color: #e74c3c;
-        color: white;
-        padding: 0.25rem 0.75rem;
-        border-radius: 1rem;
-        font-size: 0.8rem;
-        font-weight: 500;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1a202c;
     }
 
     .info-box {
-        background-color: #f0f0f0;
-        padding: 1rem;
-        border-radius: 0.375rem;
+        background-color: #f8fafc;
+        padding: 1.2rem;
+        border-radius: 10px;
+        border: 1px solid #edf2f7;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
-        margin-bottom: 1rem;
-        overflow: hidden;
+        margin-bottom: 1.2rem;
+        transition: all 0.2s;
     }
 
-    .info-box-label {
-        font-weight: 500;
-        color: #34495e;
-    }
-
-    .info-box-value {
-        white-space: nowrap;
-        overflow: hidden;
-        font-weight: bold;
-        text-overflow: ellipsis;
-        max-width: 200px;
-        display: inline-block;
-        position: relative;
-    }
-
-    /*
-    .btn-custom {
-        font-weight: 500;
-        padding: 0.75rem;
-        border-radius: 0.375rem;
-    }
-    */
-
-    .btn-custom{
-        background: linear-gradient(to right, #FFB300, #F57C00);
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 8px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.2s ease-out;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-custom:hover {
-        background: linear-gradient(to right, #FFC107, #FF9800);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    .info-box:hover {
+        background-color: #f1f5f9;
         transform: translateY(-2px);
     }
 
-    .btn-custom:active {
-        background: linear-gradient(to right, #E65100, #FFB300);
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        transform: translateY(2px);
-        outline: none;
+    .info-box-label {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #64748b;
+        margin-bottom: 5px;
     }
 
-    .main-content-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        gap: 5px;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-        justify-content: center;
+    .info-box-value {
+        font-weight: 700;
+        color: #334155;
+        font-size: 1.1rem;
     }
 
-    .main-card-container {
-        flex: 1;
-        min-width: 300px;
-        max-width: 650px;
-    }
-
-    .responsive-iframe-container {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        flex-basis: 300px;
-        flex-shrink: 0;
-        max-width: 100%;
-        height: 250px;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 5px;
-        border-radius: 8px;
-    }
-
-    .responsive-iframe-container iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    .close-button {
-        position: absolute;
-        top: -10px;
-        right: -10px;
-        background-color: #ff6600;
+    .btn-custom {
+        background: linear-gradient(135deg, #FFB300, #F57C00);
         color: white;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        border: none;
+        padding: 14px 20px;
+        border-radius: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(245, 124, 0, 0.4);
+        color: #fff;
+    }
+
+    /* --- PROFESSIONAL AD LAYOUT --- */
+    .main-content-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    @media (min-width: 992px) {
+        .main-content-wrapper {
+            grid-template-columns: 8fr 4fr; /* Card on left, Ad on right */
+        }
+    }
+
+    .ad-sidebar-container {
+        position: sticky;
+        top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ad-box-300-250 {
+        position: relative;
+        width: 310px; /* Account for padding */
+        height: 260px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .ad-label {
+        font-size: 10px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .ad-close-btn {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        width: 26px;
+        height: 26px;
+        background: #ef4444;
+        color: white;
+        border-radius: 50%;
+        border: 2px solid white;
         font-size: 16px;
         font-weight: bold;
         cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    .close-button:hover {
-        background-color: #cc5200;
-    }
-
-
-    /* video ad */
-    .video-js {
-        width: 640px;
-        height: 360px;
-        margin: auto;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        border-radius: 8px;
-    }
-
-
-    @media (min-width: 769px) {
-        .card {
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .info-box {
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .info-box-label {
-            margin-bottom: 0.25rem;
-        }
-
-        .main-content-wrapper {
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .responsive-iframe-container {
+    @media (max-width: 991px) {
+        .ad-sidebar-container {
+            order: -1; /* Show ad at top on mobile */
             margin-bottom: 20px;
-            height: 250px;
-        }
-
-        .card {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
+            position: relative;
         }
     }
 </style>
-
 {% endblock %}
 
 {% block content %}
-<div class="container ">
+<div class="container">
     <div class="main-content-wrapper">
-        <div class="main-card-container my-4">
-            <div class="card bg-white">
-                <h1 class="card-title text-center mb-4" id="past-exam-title"></h1>
-                <div class="row">
-                    <div class="col-sm-6">
+        <div class="main-card-container">
+            <div class="card">
+                <h1 class="card-title text-center mb-4" id="past-exam-title">Loading Exam Title...</h1>
+                
+                <div class="row g-3">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
                             <span class="info-box-label">মোট প্রশ্ন</span>
-                            <span class="info-box-value" id="past-exam-total-questions"></span>
+                            <span class="info-box-value" id="past-exam-total-questions">-</span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
                             <span class="info-box-label">মোট নম্বর</span>
-                            <span class="info-box-value" id="past-exam-total-marks"></span>
+                            <span class="info-box-value" id="past-exam-total-marks">-</span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="info-box">
-                            <span class="info-box-label">পরীক্ষার তারিখ</span>
-                            <span class="info-box-value" id='past-exam-date'></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
                             <span class="info-box-label">নেগেটিভ নম্বর</span>
-                            <span class="info-box-value" id='past-exam-negative-marks'></span>
+                            <span class="info-box-value" id='past-exam-negative-marks'>-</span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="info-box">
-                            <span class="info-box-label">প্রতিষ্ঠান</span>
-                            <span class="info-box-value" id='past-exam-organization'></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="info-box">
-                            <span class="info-box-label">বিভাগ</span>
-                            <span class="info-box-value" id='past-exam-department'></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="info-box">
-                            <span class="info-box-label">পদ</span>
-                            <span class="info-box-value" id="past-exam-position"></span>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
                             <span class="info-box-label">সময়কাল</span>
-                            <span class="info-box-value"><span id='past-exam-duration'></span> মিনিট</span>
+                            <span class="info-box-value"><span id='past-exam-duration'>0</span> মিনিট</span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
-                            <span class="info-box-label">প্রণেতা</span>
-                            <span class="info-box-value"><span id='exam-created-by'></span></span>
+                            <span class="info-box-label">প্রতিষ্ঠান</span>
+                            <span class="info-box-value" id='past-exam-organization'>-</span>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-6 col-md-4">
                         <div class="info-box">
-                            <span class="info-box-label">প্রণীত তারিখ</span>
-                            <span class="info-box-value"><span id='exam-created-at'></span></span>
+                            <span class="info-box-label">বিভাগ</span>
+                            <span class="info-box-value" id='past-exam-department'>-</span>
                         </div>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-6 mb-2">
+
+                <div class="row mt-4 g-2">
+                    <div class="col-6">
                         <button class="btn w-100 btn-custom" id="read">অনুশীলন করুন</button>
                     </div>
-                    <div class="col-6 mb-2">
-                        <button class="btn w-100 btn-custom" id="start-exam-btn">মূল্যায়ন</button>
+                    <div class="col-6">
+                        <button class="btn w-100 btn-custom" id="start-exam-btn">মূল্যায়ন</button>
                     </div>
-                    <div class="col-6 mb-2">
-                        <button class="btn w-100 btn-custom" id="leaderboard">লিডারবোর্ডে</button>
+                    <div class="col-6">
+                        <button class="btn w-100 btn-custom" id="leaderboard">লিডারবোর্ড</button>
                     </div>
-                    <div class="col-6 mb-2">
+                    <div class="col-6">
                         <button class="btn w-100 btn-custom" id="past_result">রেজাল্ট</button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <aside class="ad-sidebar-container" id="sidebar-ad">
+            <span class="ad-label">Advertisement</span>
+            <div class="ad-box-300-250">
+                <button class="ad-close-btn" onclick="document.getElementById('sidebar-ad').style.display='none'">×</button>
+                
+                <ins data-revive-zoneid="3" data-revive-id="70b71f6270a95002fad453afac360524"></ins>
+                <script async src="//46.225.58.8:8081/www/delivery/asyncjs.php"></script>
+            </div>
+        </aside>
     </div>
 </div>
-
 {% endblock %}
 
 {% block body_js %}
-
 <script src="../../../static/Js/new_templates_js/quiz/new_past_exam_details.js"></script>
 {% endblock %}

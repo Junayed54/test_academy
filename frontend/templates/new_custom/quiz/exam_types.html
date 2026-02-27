@@ -6,13 +6,13 @@
     .container-fluid {
         padding-top: 20px;
         padding-bottom: 20px;
-        margin-bottom: 0; /* Remove any unwanted space at the bottom */
+        margin-bottom: 0; 
     }
     .university-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 25px;
-        margin-bottom: 0; /* Remove extra margin below the grid */
+        margin-bottom: 0;
     }
     .university-grid button {
         border: none;
@@ -20,15 +20,14 @@
     }
     .university-card {
         border-radius: 12px;
-        padding: 10px; /* Reduced padding */
+        padding: 10px; 
         box-shadow: 14px 14px 33px 0px #00000040;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
-        
-        min-height: 220px; /* Reduced height */
+        min-height: 220px; 
         transition: transform 0.2s ease-in-out;
         background: #92D7DE;
         font-size: 1rem;
@@ -51,27 +50,96 @@
         transform: scale(1.03);
     }
 
-    /* Ensure footer styling works correctly */
-    footer {
-        margin-bottom: 0;
-        padding: 0; /* If there's any padding on footer */
+    /* --- UPDATED LARGER OVERLAY AD --- */
+    
+    #ad-background-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.75); 
+        z-index: 9998;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
 
-    /* Responsive Adjustments */
+    .ad-modal-content {
+        position: relative;
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        border-radius: 12px;
+        
+        /* INCREASED DIMENSIONS */
+        width: 90%;
+        max-width: 550px; /* Increased Width */
+        min-height: 350px; /* Increased Height */
+        
+        /* REMOVED OVERFLOW HIDDEN SO CROSS SIGN SHOWS */
+        text-align: center;
+        z-index: 9999;
+    }
+
+    .close-ad-btn {
+        position: absolute;
+        /* Positioned slightly inside the top-right corner to ensure visibility */
+        top: -15px;
+        right: -15px;
+        width: 35px;
+        height: 35px;
+        background: #ed1c24; /* Ekhon Red */
+        color: white;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        z-index: 10001;
+        line-height: 1;
+        transition: transform 0.2s ease;
+    }
+
+    .close-ad-btn:hover {
+        transform: scale(1.15);
+        background: #c11218;
+    }
+
+    .ad-label {
+        font-size: 11px;
+        color: #999;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        display: block;
+        letter-spacing: 1px;
+    }
+
+    .ad-hidden {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none;
+    }
+
     @media (max-width: 576px) {
-        .university-grid {
-            grid-template-columns: 1fr;
+        .ad-modal-content {
+            max-width: 95%;
+            min-height: 300px;
+            padding: 15px;
         }
-        .university-card {
-            padding: 10px;
-            min-height: 100px;
-        }
-        .university-card h6 {
-            font-size: 0.9rem;
-            margin-bottom: 3px;
-        }
-        .university-card p {
-            font-size: 0.7rem;
+        .close-ad-btn {
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            font-size: 18px;
         }
     }
 </style>
@@ -84,19 +152,7 @@
         <div class="row">
             <div class="d-flex justify-content-between align-items-center">
                 <h1 class="text-muted" style="font-size: 24px; font-weight: 600; text-shadow: 0px 7px 5px #00000040; color: #534268;">পূর্ববর্তী পরিক্ষাগুলি</h1>
-                <!-- <div class="d-none d-lg-block">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '41821e016b8dd1782271f3a3f4f501a8',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//www.highperformanceformat.com/41821e016b8dd1782271f3a3f4f501a8/invoke.js"></script>
-
-                </div> -->
+                
                 <div class="input-group mb-3 border-bottom" style="width: 300px">
                     <input type="text" class="form-control border-0 text-center" placeholder="" aria-label="">
                     <button class="btn btn-outline-secondary border-0" type="button">
@@ -116,6 +172,43 @@
     </div>
      <div style="height: 250px"></div>
 </div>
+
+<div id="ad-background-overlay">
+    <div class="ad-modal-content">
+        <button class="close-ad-btn" onclick="closeAdOverlay()" aria-label="Close Ad">×</button>
+        
+        <span class="ad-label">Sponsored Advertisement</span>
+        
+        <div class="ad-container" style="min-height: 250px;">
+            <!-- Revive Adserver Asynchronous JS Tag - Generated with Revive Adserver v6.0.5 -->
+            <!-- Revive Adserver iFrame Tag - Generated with Revive Adserver v6.0.5 -->
+            <iframe id='a6645e8f' name='a6645e8f' src='//46.225.58.8:8081/www/delivery/afr.php?zoneid=2&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='214' height='236' allow='autoplay'><a href='https://46.225.58.8:8081/www/delivery/ck.php?n=a81affa6&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='https://46.225.58.8:8081/www/delivery/avw.php?zoneid=2&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a81affa6' border='0' alt='' /></a></iframe>
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 
-{% block body_js %}<script src="../../../static/Js/new_templates_js/quiz/past_exam_types.js"></script>{% endblock %}
+{% block body_js %}
+<script src="../../../static/Js/new_templates_js/quiz/past_exam_types.js"></script>
+<script>
+    function closeAdOverlay() {
+        const overlay = document.getElementById('ad-background-overlay');
+        if (overlay) {
+            overlay.classList.add('ad-hidden');
+            // Remove from DOM to stop any script background activity after closing
+            setTimeout(() => { 
+                overlay.style.display = 'none'; 
+            }, 300);
+        }
+    }
+
+    // Optional: Close on clicking the dark background (outside the ad box)
+    document.getElementById('ad-background-overlay').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeAdOverlay();
+        }
+    });
+</script>
+{% endblock %}
